@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="author" content="">
+<meta name="description" content="When should properties be lazy? https://zhuanlan.zhihu.com/p/133627495
+Swift’s lazy properties let us delay the creation of a property until it’s actually used, which makes them like a computed property. However, unlike a computed property they store the result that gets calculated, so that subsequent accesses to the property don’t redo the work. This allows them to provide extra performance when they aren’t used (because their code is never run), and extra performance when they are used repeatedly (because their value is cached." />
+<meta name="keywords" content="fgf, swift" />
+<meta name="robots" content="noodp" />
+<meta name="theme-color" content="" />
+<link rel="canonical" href="https://xiaochuan4938.github.io/posts/block/" />
+
+
+    <title>
+        
+            OnSwift :: Xiaochuan 
+        
+    </title>
+
+
+
+<link href="https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.5.0/css/flag-icon.min.css" rel="stylesheet"
+    type="text/css">
+
+
+
+<link rel="stylesheet" href="/main.4e5c639214707eff609bb55fe49e183dee42258a73bc90e4cc7b0a84f900798a.css">
+
+
+
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link rel="manifest" href="/site.webmanifest">
+    <link rel="mask-icon" href="/safari-pinned-tab.svg" color="">
+    <link rel="shortcut icon" href="/favicon.ico">
+    <meta name="msapplication-TileColor" content="">
+
+
+<meta itemprop="name" content="OnSwift">
+<meta itemprop="description" content="When should properties be lazy? https://zhuanlan.zhihu.com/p/133627495
+Swift’s lazy properties let us delay the creation of a property until it’s actually used, which makes them like a computed property. However, unlike a computed property they store the result that gets calculated, so that subsequent accesses to the property don’t redo the work. This allows them to provide extra performance when they aren’t used (because their code is never run), and extra performance when they are used repeatedly (because their value is cached."><meta itemprop="datePublished" content="2015-10-04T12:57:48-04:00" />
+<meta itemprop="dateModified" content="2015-10-04T12:57:48-04:00" />
+<meta itemprop="wordCount" content="267"><meta itemprop="image" content="https://xiaochuan4938.github.io/"/>
+<meta itemprop="keywords" content="swift," />
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="https://xiaochuan4938.github.io/"/>
+
+<meta name="twitter:title" content="OnSwift"/>
+<meta name="twitter:description" content="When should properties be lazy? https://zhuanlan.zhihu.com/p/133627495
+Swift’s lazy properties let us delay the creation of a property until it’s actually used, which makes them like a computed property. However, unlike a computed property they store the result that gets calculated, so that subsequent accesses to the property don’t redo the work. This allows them to provide extra performance when they aren’t used (because their code is never run), and extra performance when they are used repeatedly (because their value is cached."/>
+
+
+
+    <meta property="og:title" content="OnSwift" />
+<meta property="og:description" content="When should properties be lazy? https://zhuanlan.zhihu.com/p/133627495
+Swift’s lazy properties let us delay the creation of a property until it’s actually used, which makes them like a computed property. However, unlike a computed property they store the result that gets calculated, so that subsequent accesses to the property don’t redo the work. This allows them to provide extra performance when they aren’t used (because their code is never run), and extra performance when they are used repeatedly (because their value is cached." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://xiaochuan4938.github.io/posts/block/" /><meta property="og:image" content="https://xiaochuan4938.github.io/"/><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2015-10-04T12:57:48-04:00" />
+<meta property="article:modified_time" content="2015-10-04T12:57:48-04:00" />
+
+
+
+
+
+
+
+    <meta property="article:published_time" content="2015-10-04 12:57:48 -0400 EDT" />
+
+
+
+
+
+
+
+
+
+
+    </head>
+
+    
+        <body>
+    
+    
+        <div class="container">
+            <header class="header">
+    <span class="header__inner">
+        <a href="/" style="text-decoration: none;">
+    <div class="logo">
+        
+            <span class="logo__mark"> </span>
+            <span class="logo__text">Home</span>
+            <span class="logo__cursor" style=
+                  "visibility:hidden;
+                   
+                   ">
+            </span>
+        
+    </div>
+</a>
+
+
+        <span class="header__right">
+            
+                <nav class="menu">
+    <ul class="menu__inner"><li><a href="/posts/block">About</a></li><li><a href="/posts">Archive</a></li><li><a href="/posts">Blog</a></li>
+    </ul>
+</nav>
+
+                <span class="menu-trigger">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                        <path d="M0 0h24v24H0z" fill="none"/>
+                        <path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"/>
+                    </svg>
+                </span>
+            
+                <span class="theme-toggle not-selectable"><svg class="theme-toggler" width="24" height="24" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+   <path d="M22 41C32.4934 41 41 32.4934 41 22C41 11.5066 32.4934 3 22
+   3C11.5066 3 3 11.5066 3 22C3 32.4934 11.5066 41 22 41ZM7 22C7
+   13.7157 13.7157 7 22 7V37C13.7157 37 7 30.2843 7 22Z"/>
+ </svg></span>
+        </span>
+    </span>
+</header>
+
+
+            <div class="content">
+                
+  <main class="post">
+
+    <div class="post-info">
+      <p>
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-clock">
+          <circle cx="12" cy="12" r="10"></circle>
+          <polyline points="12 6 12 12 16 14"></polyline>
+        </svg>
+        2 minutes
+
+        
+      </p>
+    </div>
+
+    <article>
+      <h1 class="post-title">
+        <a href="https://xiaochuan4938.github.io/posts/block/">OnSwift</a>
+      </h1>
+
+      
+
+      
+
+      
+
+      <div class="post-content">
+        <h1 id="when-should-properties-be-lazy">When should properties be lazy?</h1>
+<p><a href="https://zhuanlan.zhihu.com/p/133627495">https://zhuanlan.zhihu.com/p/133627495</a></p>
+<p>Swift’s lazy properties let us delay the creation of a property until it’s actually used, which makes them like a computed property. However, unlike a computed property they store the result that gets calculated, so that subsequent accesses to the property don’t redo the work. This allows them to provide extra performance when they aren’t used (because their code is never run), and extra performance when they are used repeatedly (because their value is cached.)</p>
+<p>However, that doesn’t mean we should make every property lazy, or indeed most properties – in practice, the majority of properties are just standard stored properties. There are a few reasons why you would prefer stored or computed properties over a lazy property, such as:</p>
+<p>Using lazy properties can accidentally produce work where you don’t expect it. For example, if you’re building a game and access a complex lazy property for the first time it might cause your game to slow down, so it’s much better to do slow work up front and get it out of the way.
+Lazy properties always store their result, which might either be unnecessary (because you aren’t going to use it again) or be pointless (because it needs to be recalculated frequently).
+Because lazy properties change the underlying object they are attached to, you can’t use them on constant structs.
+When trying to optimize code, it’s usually a better idea to wait until you actually have a problem you need to optimize rather than prematurely scattering things like lazy properties around.</p>
+<p>//markdowm 语法
+<a href="https://www.runoob.com/markdown/md-advance.html">https://www.runoob.com/markdown/md-advance.html</a></p>
+<p>//可以把这些文章全部拷贝过来
+<a href="https://useyourloaf.com/archives/">https://useyourloaf.com/archives/</a></p>
+<p>//现在用的模版
+<a href="https://themes.gohugo.io/themes/hugo-theme-hello-friend-ng/">https://themes.gohugo.io/themes/hugo-theme-hello-friend-ng/</a>
+//这个模版也不错
+<a href="https://themes.gohugo.io/themes/gokarna/">https://themes.gohugo.io/themes/gokarna/</a></p>
+
+      </div>
+    </article>
+
+    <hr />
+
+    <div class="post-info">
+      
+    <p>
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-tag meta-icon"><path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"></path><line x1="7" y1="7" x2="7" y2="7"></line></svg>
+
+        <span class="tag"><a href="https://xiaochuan4938.github.io/tags/swift/">swift</a></span>
+        
+    </p>
+
+      
+
+      <p>
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-file-text">
+          <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+          <polyline points="14 2 14 8 20 8"></polyline>
+          <line x1="16" y1="13" x2="8" y2="13"></line>
+          <line x1="16" y1="17" x2="8" y2="17"></line>
+          <polyline points="10 9 9 9 8 9"></polyline>
+        </svg>
+        267 Words
+      </p>
+
+      <p>
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-calendar">
+          <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+          <line x1="16" y1="2" x2="16" y2="6"></line>
+          <line x1="8" y1="2" x2="8" y2="6"></line>
+          <line x1="3" y1="10" x2="21" y2="10"></line>
+        </svg>
+        
+          2015-10-04 12:57
+        
+
+         
+          
+        
+      </p>
+    </div>
+
+    
+    <div class="pagination">
+        
+
+        <div class="pagination__buttons">
+            
+
+            
+            <span class="button next">
+                <a href="https://xiaochuan4938.github.io/posts/swiftinit/">
+                    <span class="button__text">OnSwiftLazy</span>
+                    <span class="button__icon">→</span>
+                </a>
+            </span>
+            
+        </div>
+    </div>
+
+
+    
+
+    
+
+  </main>
+
+            </div>
+
+            
+                <footer class="footer">
+    
+    <div class="footer__inner">
+        <div class="footer__content">
+            <span>&copy; 2022</span>
+            
+            <span><a href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank" rel="noopener">CC BY-NC 4.0</a></span>
+            
+            
+        </div>
+    </div>
+    
+    
+    <div class="footer__inner">
+        <div class="footer__content">
+            <span>Powered by <a href="http://gohugo.io">Hugo</a></span><span>Made with &#10084; by <a href="https://github.com/rhazdon">Djordje Atlialp</a></span>
+        </div>
+    </div>
+    
+</footer>
+
+            
+        </div>
+
+        
+
+
+
+<script type="text/javascript" src="/bundle.min.599099f1f14b78b657d524b28e10e0c5098e7cd46e9c7aed73d577068a276c3ff1bb234cbf29cb313333e83cf411727b43157c91ce5b809e2ffc81664614608e.js" integrity="sha512-WZCZ8fFLeLZX1SSyjhDgxQmOfNRunHrtc9V3BoonbD/xuyNMvynLMTMz6Dz0EXJ7QxV8kc5bgJ4v/IFmRhRgjg=="></script>
+
+
+
+    </body>
+</html>

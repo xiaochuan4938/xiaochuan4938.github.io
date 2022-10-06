@@ -1,0 +1,94 @@
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+    <channel>
+        <title>Posts on Xiaochuan</title>
+        <link>https://xiaochuan4938.github.io/posts/</link>
+        <description>Recent content in Posts on Xiaochuan</description>
+        <generator>Hugo -- gohugo.io</generator>
+        <language>en-us</language>
+        <copyright>&lt;a href=&#34;https://creativecommons.org/licenses/by-nc/4.0/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;CC BY-NC 4.0&lt;/a&gt;</copyright>
+        <lastBuildDate>Sun, 04 Oct 2015 12:57:48 -0400</lastBuildDate>
+        <atom:link href="https://xiaochuan4938.github.io/posts/index.xml" rel="self" type="application/rss+xml" />
+        
+        <item>
+            <title>OnSwift</title>
+            <link>https://xiaochuan4938.github.io/posts/block/</link>
+            <pubDate>Sun, 04 Oct 2015 12:57:48 -0400</pubDate>
+            
+            <guid>https://xiaochuan4938.github.io/posts/block/</guid>
+            <description>When should properties be lazy? https://zhuanlan.zhihu.com/p/133627495
+Swift’s lazy properties let us delay the creation of a property until it’s actually used, which makes them like a computed property. However, unlike a computed property they store the result that gets calculated, so that subsequent accesses to the property don’t redo the work. This allows them to provide extra performance when they aren’t used (because their code is never run), and extra performance when they are used repeatedly (because their value is cached.</description>
+            <content type="html"><![CDATA[<h1 id="when-should-properties-be-lazy">When should properties be lazy?</h1>
+<p><a href="https://zhuanlan.zhihu.com/p/133627495">https://zhuanlan.zhihu.com/p/133627495</a></p>
+<p>Swift’s lazy properties let us delay the creation of a property until it’s actually used, which makes them like a computed property. However, unlike a computed property they store the result that gets calculated, so that subsequent accesses to the property don’t redo the work. This allows them to provide extra performance when they aren’t used (because their code is never run), and extra performance when they are used repeatedly (because their value is cached.)</p>
+<p>However, that doesn’t mean we should make every property lazy, or indeed most properties – in practice, the majority of properties are just standard stored properties. There are a few reasons why you would prefer stored or computed properties over a lazy property, such as:</p>
+<p>Using lazy properties can accidentally produce work where you don’t expect it. For example, if you’re building a game and access a complex lazy property for the first time it might cause your game to slow down, so it’s much better to do slow work up front and get it out of the way.
+Lazy properties always store their result, which might either be unnecessary (because you aren’t going to use it again) or be pointless (because it needs to be recalculated frequently).
+Because lazy properties change the underlying object they are attached to, you can’t use them on constant structs.
+When trying to optimize code, it’s usually a better idea to wait until you actually have a problem you need to optimize rather than prematurely scattering things like lazy properties around.</p>
+<p>//markdowm 语法
+<a href="https://www.runoob.com/markdown/md-advance.html">https://www.runoob.com/markdown/md-advance.html</a></p>
+<p>//可以把这些文章全部拷贝过来
+<a href="https://useyourloaf.com/archives/">https://useyourloaf.com/archives/</a></p>
+<p>//现在用的模版
+<a href="https://themes.gohugo.io/themes/hugo-theme-hello-friend-ng/">https://themes.gohugo.io/themes/hugo-theme-hello-friend-ng/</a>
+//这个模版也不错
+<a href="https://themes.gohugo.io/themes/gokarna/">https://themes.gohugo.io/themes/gokarna/</a></p>
+]]></content>
+        </item>
+        
+        <item>
+            <title>OnSwiftLazy</title>
+            <link>https://xiaochuan4938.github.io/posts/swiftinit/</link>
+            <pubDate>Sun, 04 Oct 2015 12:57:48 -0400</pubDate>
+            
+            <guid>https://xiaochuan4938.github.io/posts/swiftinit/</guid>
+            <description>When should properties be lazy? https://zhuanlan.zhihu.com/p/133627495
+Swift’s lazy properties let us delay the creation of a property until it’s actually used, which makes them like a computed property. However, unlike a computed property they store the result that gets calculated, so that subsequent accesses to the property don’t redo the work. This allows them to provide extra performance when they aren’t used (because their code is never run), and extra performance when they are used repeatedly (because their value is cached.</description>
+            <content type="html"><![CDATA[<h1 id="when-should-properties-be-lazy">When should properties be lazy?</h1>
+<p><a href="https://zhuanlan.zhihu.com/p/133627495">https://zhuanlan.zhihu.com/p/133627495</a></p>
+<p>Swift’s lazy properties let us delay the creation of a property until it’s actually used, which makes them like a computed property. However, unlike a computed property they store the result that gets calculated, so that subsequent accesses to the property don’t redo the work. This allows them to provide extra performance when they aren’t used (because their code is never run), and extra performance when they are used repeatedly (because their value is cached.)</p>
+<p>However, that doesn’t mean we should make every property lazy, or indeed most properties – in practice, the majority of properties are just standard stored properties. There are a few reasons why you would prefer stored or computed properties over a lazy property, such as:</p>
+<p>Using lazy properties can accidentally produce work where you don’t expect it. For example, if you’re building a game and access a complex lazy property for the first time it might cause your game to slow down, so it’s much better to do slow work up front and get it out of the way.
+Lazy properties always store their result, which might either be unnecessary (because you aren’t going to use it again) or be pointless (because it needs to be recalculated frequently).
+Because lazy properties change the underlying object they are attached to, you can’t use them on constant structs.
+When trying to optimize code, it’s usually a better idea to wait until you actually have a problem you need to optimize rather than prematurely scattering things like lazy properties around.</p>
+<p>//markdowm 语法
+<a href="https://www.runoob.com/markdown/md-advance.html">https://www.runoob.com/markdown/md-advance.html</a></p>
+<p>//可以把这些文章全部拷贝过来
+<a href="https://useyourloaf.com/archives/">https://useyourloaf.com/archives/</a></p>
+<p>//现在用的模版
+<a href="https://themes.gohugo.io/themes/hugo-theme-hello-friend-ng/">https://themes.gohugo.io/themes/hugo-theme-hello-friend-ng/</a>
+//这个模版也不错
+<a href="https://themes.gohugo.io/themes/gokarna/">https://themes.gohugo.io/themes/gokarna/</a></p>
+]]></content>
+        </item>
+        
+        <item>
+            <title>OnSwiftLazy</title>
+            <link>https://xiaochuan4938.github.io/posts/swiftlazyproperty/</link>
+            <pubDate>Sun, 04 Oct 2015 12:57:48 -0400</pubDate>
+            
+            <guid>https://xiaochuan4938.github.io/posts/swiftlazyproperty/</guid>
+            <description>When should properties be lazy? https://zhuanlan.zhihu.com/p/133627495
+Swift’s lazy properties let us delay the creation of a property until it’s actually used, which makes them like a computed property. However, unlike a computed property they store the result that gets calculated, so that subsequent accesses to the property don’t redo the work. This allows them to provide extra performance when they aren’t used (because their code is never run), and extra performance when they are used repeatedly (because their value is cached.</description>
+            <content type="html"><![CDATA[<h1 id="when-should-properties-be-lazy">When should properties be lazy?</h1>
+<p><a href="https://zhuanlan.zhihu.com/p/133627495">https://zhuanlan.zhihu.com/p/133627495</a></p>
+<p>Swift’s lazy properties let us delay the creation of a property until it’s actually used, which makes them like a computed property. However, unlike a computed property they store the result that gets calculated, so that subsequent accesses to the property don’t redo the work. This allows them to provide extra performance when they aren’t used (because their code is never run), and extra performance when they are used repeatedly (because their value is cached.)</p>
+<p>However, that doesn’t mean we should make every property lazy, or indeed most properties – in practice, the majority of properties are just standard stored properties. There are a few reasons why you would prefer stored or computed properties over a lazy property, such as:</p>
+<p>Using lazy properties can accidentally produce work where you don’t expect it. For example, if you’re building a game and access a complex lazy property for the first time it might cause your game to slow down, so it’s much better to do slow work up front and get it out of the way.
+Lazy properties always store their result, which might either be unnecessary (because you aren’t going to use it again) or be pointless (because it needs to be recalculated frequently).
+Because lazy properties change the underlying object they are attached to, you can’t use them on constant structs.
+When trying to optimize code, it’s usually a better idea to wait until you actually have a problem you need to optimize rather than prematurely scattering things like lazy properties around.</p>
+<p>//markdowm 语法
+<a href="https://www.runoob.com/markdown/md-advance.html">https://www.runoob.com/markdown/md-advance.html</a></p>
+<p>//可以把这些文章全部拷贝过来
+<a href="https://useyourloaf.com/archives/">https://useyourloaf.com/archives/</a></p>
+<p>//现在用的模版
+<a href="https://themes.gohugo.io/themes/hugo-theme-hello-friend-ng/">https://themes.gohugo.io/themes/hugo-theme-hello-friend-ng/</a>
+//这个模版也不错
+<a href="https://themes.gohugo.io/themes/gokarna/">https://themes.gohugo.io/themes/gokarna/</a></p>
+]]></content>
+        </item>
+        
+    </channel>
+</rss>

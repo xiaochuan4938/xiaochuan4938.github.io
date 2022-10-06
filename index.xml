@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Xiaochuan</title>
+    <link>https://xiaochuan4938.github.io/</link>
+    <description>Recent content on Xiaochuan</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <copyright>&lt;a href=&#34;https://creativecommons.org/licenses/by-nc/4.0/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;CC BY-NC 4.0&lt;/a&gt;</copyright>
+    <lastBuildDate>Sun, 04 Oct 2015 12:57:48 -0400</lastBuildDate><atom:link href="https://xiaochuan4938.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>OnSwift</title>
+      <link>https://xiaochuan4938.github.io/posts/block/</link>
+      <pubDate>Sun, 04 Oct 2015 12:57:48 -0400</pubDate>
+      
+      <guid>https://xiaochuan4938.github.io/posts/block/</guid>
+      <description>When should properties be lazy? https://zhuanlan.zhihu.com/p/133627495
+Swift’s lazy properties let us delay the creation of a property until it’s actually used, which makes them like a computed property. However, unlike a computed property they store the result that gets calculated, so that subsequent accesses to the property don’t redo the work. This allows them to provide extra performance when they aren’t used (because their code is never run), and extra performance when they are used repeatedly (because their value is cached.</description>
+    </item>
+    
+    <item>
+      <title>OnSwiftLazy</title>
+      <link>https://xiaochuan4938.github.io/posts/swiftinit/</link>
+      <pubDate>Sun, 04 Oct 2015 12:57:48 -0400</pubDate>
+      
+      <guid>https://xiaochuan4938.github.io/posts/swiftinit/</guid>
+      <description>When should properties be lazy? https://zhuanlan.zhihu.com/p/133627495
+Swift’s lazy properties let us delay the creation of a property until it’s actually used, which makes them like a computed property. However, unlike a computed property they store the result that gets calculated, so that subsequent accesses to the property don’t redo the work. This allows them to provide extra performance when they aren’t used (because their code is never run), and extra performance when they are used repeatedly (because their value is cached.</description>
+    </item>
+    
+    <item>
+      <title>OnSwiftLazy</title>
+      <link>https://xiaochuan4938.github.io/posts/swiftlazyproperty/</link>
+      <pubDate>Sun, 04 Oct 2015 12:57:48 -0400</pubDate>
+      
+      <guid>https://xiaochuan4938.github.io/posts/swiftlazyproperty/</guid>
+      <description>When should properties be lazy? https://zhuanlan.zhihu.com/p/133627495
+Swift’s lazy properties let us delay the creation of a property until it’s actually used, which makes them like a computed property. However, unlike a computed property they store the result that gets calculated, so that subsequent accesses to the property don’t redo the work. This allows them to provide extra performance when they aren’t used (because their code is never run), and extra performance when they are used repeatedly (because their value is cached.</description>
+    </item>
+    
+  </channel>
+</rss>
